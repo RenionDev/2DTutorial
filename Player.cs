@@ -1,3 +1,4 @@
+using System;
 using Godot;
 
 public partial class Player : Area2D
@@ -12,7 +13,8 @@ public partial class Player : Area2D
 	public override void _Ready()
 	{
 		ScreenSize = GetViewportRect().Size;
-		//Hide();
+		Hide();
+		GD.Print("HIDING START PLAYER");
 	}
 
 	public override void _Process(double delta)
@@ -71,6 +73,7 @@ public partial class Player : Area2D
 
 	private void OnBodyEntered(Node2D body)
 	{
+		GD.Print("GETTING HIT !");
 		Hide(); // Player disappears after being hit
 		EmitSignal(SignalName.Hit);
 		// Must be deferred as we can't change physics properties on a physics callback.
@@ -81,6 +84,6 @@ public partial class Player : Area2D
 	{
 		Position = position;
 		Show();
-		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = true;
+		GetNode<CollisionShape2D>("CollisionShape2D").Disabled = false;
 	}
 }
