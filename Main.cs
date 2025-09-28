@@ -54,7 +54,6 @@ public partial class Main : Node
     // We also specified this function name in PascalCase in the editor's connection window.
     public void OnMobTimerTimeout()
     {
-        GD.Print("Adding mob !");
         // Create a new instance of the Mob scene.
         Mob mob = MobScene.Instantiate<Mob>();
         

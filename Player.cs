@@ -14,7 +14,6 @@ public partial class Player : Area2D
 	{
 		ScreenSize = GetViewportRect().Size;
 		Hide();
-		GD.Print("HIDING START PLAYER");
 	}
 
 	public override void _Process(double delta)
@@ -73,7 +72,6 @@ public partial class Player : Area2D
 
 	private void OnBodyEntered(Node2D body)
 	{
-		GD.Print("GETTING HIT !");
 		Hide(); // Player disappears after being hit
 		EmitSignal(SignalName.Hit);
 		// Must be deferred as we can't change physics properties on a physics callback.
