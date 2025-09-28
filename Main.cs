@@ -31,6 +31,10 @@ public partial class Main : Node
         var hud = GetNode<Hud>("HUD");
         hud.UpdateScore(_score);
         hud.ShowMessage("Get Ready");
+        
+        // Note that for calling Godot-provided methods with strings,
+        // we have to use the original Godot snake_case name.
+        GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
     }
 
     // We also specified this function name in PascalCase in the editor's connection window.
