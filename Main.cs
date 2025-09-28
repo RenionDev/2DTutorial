@@ -16,6 +16,9 @@ public partial class Main : Node
         GetNode<Timer>("ScoreTimer").Stop();
 
         GetNode<Hud>("HUD").ShowGameOver();
+        
+        GetNode<AudioStreamPlayer2D>("Music").Stop();
+        GetNode<AudioStreamPlayer2D>("DeathSound").Play();
     }
 
     public void NewGame()
@@ -35,6 +38,8 @@ public partial class Main : Node
         // Note that for calling Godot-provided methods with strings,
         // we have to use the original Godot snake_case name.
         GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
+        
+        GetNode<AudioStreamPlayer2D>("Music").Play();
     }
 
     // We also specified this function name in PascalCase in the editor's connection window.
